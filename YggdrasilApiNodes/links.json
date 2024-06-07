@@ -1,0 +1,10 @@
+﻿{
+  "githubdata": {
+    "root": "https://github.com/yggdrasil-network/public-peers/tree/master/",
+    "leaths": [
+      "https://github.com/yggdrasil-network/public-peers/blob/master/asia/philippines.md",
+      "https://github.com/yggdrasil-network/public-peers/blob/master/asia/hong-kong.md"
+    ]
+  },
+  "defaultweb": "https://publicpeers.neilalexander.dev/v0.5"
+}

@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  yggdrasilapinodes:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:8081;http://+:8080
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/YggdrasilApiNodes.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=wczwLpQidy/W1cNnow5QfQusAAqxHjFh
+    volumes:
+      - ~/.aspnet/https:/https:ro
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+  nginx:
+    volumes:
+      - ~/.aspnet/https/ca.pem:/etc/certificate/ca.pem:ro
+      - ~/.aspnet/https/ca.key:/etc/certificate/ca.key:ro

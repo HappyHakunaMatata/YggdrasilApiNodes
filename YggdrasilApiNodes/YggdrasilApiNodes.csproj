@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>dac6fa3e-7bfc-4bf4-846c-e9adddd22de6</UserSecretsId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="YamlDotNet" Version="15.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Services\" />
+    <None Remove="Models\" />
+    <None Remove="Interfaces\" />
+    <None Remove="Models\Github\" />
+    <None Remove="Services\ServiceLocatorPattern\" />
+    <None Remove="Services\CompositePattern\" />
+    <None Remove="Services\ObserverPattern\" />
+    <None Remove="Enumerations\" />
+    <None Remove="Services\AdapterPattern\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Models\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Models\Github\" />
+    <Folder Include="Services\ServiceLocatorPattern\" />
+    <Folder Include="Services\CompositePattern\" />
+    <Folder Include="Services\ObserverPattern\" />
+    <Folder Include="Enumerations\" />
+    <Folder Include="Services\AdapterPattern\" />
+  </ItemGroup>
+</Project>

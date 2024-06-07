@@ -1,0 +1,26 @@
+﻿@YggdrasilApiNodes_HostAddress = http://localhost:5150
+
+GET {{YggdrasilApiNodes_HostAddress}}/
+Accept: application/json
+
+###
+
+GET https://localhost:7278/Peer/GetPeerByLastOnline
+Content-Type: application/json
+
+{
+    "dateTime": "2024-04-29T00:00:00"
+}
+
+
+###
+
+GET https://localhost:7278/Peer/GetNodesByCountry?country=brazil
+Content-Type: application/json
+
+###
+
+GET https://localhost:7278/Peer/GetCountries?format=1
+Content-Type: application/xml
+
+###

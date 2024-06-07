@@ -1,0 +1,45 @@
+version: '3.4'
+
+services:
+  yggdrasilapinodes:
+    container_name: yggdrasilapinodes
+    image: happyhakunamatata/littlemozzarellanetwork:yggdrasilapiservice
+    build:
+      context: .
+      dockerfile: YggdrasilApiNodes/Dockerfile
+    networks:
+      - nginx_network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=https://+:8081
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/etc/certificate/ca.pem
+      - ASPNETCORE_Kestrel__Certificates__Default__KeyPath=/etc/certificate/ca.key
+    volumes:
+      - certificate:/etc/certificate/
+  nginx:
+    container_name: nginx
+    image: happyhakunamatata/littlemozzarellanetwork:yggdrasilapinginx
+    build:
+      context: .
+      target: prod
+      dockerfile: nginx/Dockerfile
+    ports:
+      - "443:443"
+      - "80:80"
+    networks:
+      certificate_network:
+        ipv4_address: 128.0.0.3
+      nginx_network:
+    volumes:
+      - certificate:/etc/certificate/
+    depends_on:
+      - yggdrasilapinodes
+volumes:
+  certificate:
+    external: true
+networks:
+  nginx_network:
+    external: false
+    name: nginx_network
+  certificate_network:
+    external: true

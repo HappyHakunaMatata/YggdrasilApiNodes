@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  yggdrasilapinodes:
+    container_name: yggdrasilapinodes
+    image: ${DOCKER_REGISTRY-}yggdrasilapinodes
+    build:
+      context: .
+      dockerfile: YggdrasilApiNodes/Dockerfile
+    expose:
+      - "8080"
+    networks:
+      - nginx_network
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      target: dev
+      dockerfile: nginx/Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - nginx_network
+networks:
+  nginx_network:
+    external: false
+    name: nginx_network
